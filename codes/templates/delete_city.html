@@ -1,0 +1,21 @@
+{%extends 'layout.html'%}
+{%block content%}
+	<div class = "content-section">
+		<form method = "POST" action = "">
+			{{form.hidden_tag()}}
+			<fieldset class = "form-group">
+				<legend class = "border-bottom mb-4">Delete City</legend>
+				<label for="city_id">City:</label>
+				<select name="city_id" id="city_id">
+					{% for city in cities %}
+						<option value="{{ city.id }}">{{ city.city }}</option>
+					{% endfor %}
+				</select>
+			</fieldset>
+			<div class = "form-group">
+				{{form.submit(class= "btn btn-outline-info")}}
+			</div>
+		</form>
+	</div>
+
+{%endblock content%}

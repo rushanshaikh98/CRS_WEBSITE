@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h3>Requests:</h3>
+    {% for user in users_list %}
+        <article class="media content-section">
+              <div class="media-body">
+                  <a class="mr-2" href="{{ url_for('admins.verify_user', user_id=user.User.id) }}">{{ user.User.name}}</a>
+                  <p>Username : {{ user.User.username }}  ||  Email : {{ user.User.email }}</p>
+              </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

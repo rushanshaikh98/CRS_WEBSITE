@@ -1,0 +1,143 @@
+body {
+  background: #333647;
+  color: #ffffff;
+  margin-top: 6rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+}
+
+.bg-steel {
+  background-color: #282A39;
+  border: 1px solid #dddddd;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  background: #282A39;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.form_filed {
+  background: #333647;
+  color: #ffffff;
+  border: 1px solid whitesmoke;
+}
+
+.cust {
+  background: #282A39;
+  border: 1px solid #dddddd;
+  color: #ffffff;
+}
+
+.article-title {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #F87C58;
+}
+
+a.article-title:hover {
+  color: #F87C58;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 400px;
+  width: 650px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+a{
+  color: white;
+}
+
+.media-body .article-metadata .mr-2:hover{
+  color: #F87C58;
+}
+
+.btn-info {
+    background-color: #F87C58;
+    border-color: #fff;
+}
+
+.btn-info:hover {
+    background-color: #333647;
+    border-color: #fff;
+}
+
+.btn-outline-info{
+    color: #fff;
+    background-color: #333647;
+    border-color: #FFFFFF;
+}
+
+.btn-outline-info:hover{
+    background-color: #F87C58;
+    border-color: #F87C58;
+}
+
+.colorbutton{
+    background-color: #F87C58;
+    color: white;
+    border: 0;
+    width: 241px;
+    height: 83px;
+}
+.colorbutton:hover {
+    background-color: white;
+    color: black;
+    border: 0;
+}
+
+textarea {
+  max-width: 100%;
+}

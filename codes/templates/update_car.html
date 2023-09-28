@@ -1,0 +1,92 @@
+{%extends 'layout.html'%}
+{%block content%}
+	<div class = "content-section">
+		<form method = "POST" action = "">
+			{{form.hidden_tag()}}
+			<fieldset class = "form-group">
+				<legend class = "border-bottom mb-4">Update Car</legend>
+				<div class = "form-group">
+					{{form.color.label(class="form-control-label")}}
+					{%if form.color.errors%}
+						{{form.color(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.color.errors%}
+								<span>{{error}}</span>
+							{%endfor%}
+						</div>
+					{%else%}
+						{{form.color(class="form-control form-control-lg form_filed")}}
+					{%endif%}
+				</div>
+				<div class = "form-group">
+					{{form.mileage.label(class="form-control-label")}}
+					{%if form.mileage.errors%}
+						{{form.mileage(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.mileage.errors%}
+								<span>{{error}}</span>
+							{%endfor%}
+						</div>
+					{%else%}
+						{{form.mileage(class="form-control form-control-lg form_filed")}}
+					{%endif%}
+				</div>
+				<div class = "form-group">
+					{{form.ppd.label(class="form-control-label")}}
+					{%if form.ppd.errors%}
+						{{form.ppd(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.ppd.errors%}
+								<span>{{error}}</span>
+							{%endfor%}
+						</div>
+					{%else%}
+						{{form.ppd(class="form-control form-control-lg form_filed")}}
+					{%endif%}
+				</div>
+				<div class = "form-group">
+					{{form.min_rent.label(class="form-control-label")}}
+					{%if form.min_rent.errors%}
+						{{form.min_rent(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.min_rent.errors%}
+								<span>{{error}}</span>
+							{%endfor%}
+						</div>
+					{%else%}
+						{{form.min_rent(class="form-control form-control-lg form_filed")}}
+					{%endif%}
+				</div>
+				<div class = "form-group">
+					{{form.deposit.label(class="form-control-label")}}
+					{%if form.deposit.errors%}
+						{{form.deposit(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.deposit.errors%}
+								<span>{{error}}</span>
+							{%endfor%}
+						</div>
+					{%else%}
+						{{form.deposit(class="form-control form-control-lg form_filed")}}
+					{%endif%}
+				</div>
+				<label for="city_id">City:</label>
+				<select name="city_id" id="city_id">
+					<option value="{{ current_city.id }}">{{ current_city.city }}</option>
+					{% for city in cities %}
+						<option value="{{ city.id }}">{{ city.city }}</option>
+					{% endfor %}
+				</select>
+				<label for="status">Status:</label>
+				<select name="status" id="status">
+					<option value="true">True</option>
+					<option value="false">False</option>
+				</select>
+			</fieldset>
+			<div class = "form-group">
+				{{form.submit(class= "btn btn-outline-info")}}
+			</div>
+		</form>
+	</div>
+
+{%endblock content%}

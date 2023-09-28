@@ -1,0 +1,48 @@
+{%extends 'layout.html'%}
+{%block content%}
+	{% if records %}
+		{% if records[-1].approval == "" %}
+			<h1>Please wait for the previous request to be responded!</h1>
+		{% elif records[-1].approval == "true" %}
+			<h1>Your account is already verified!</h1>
+		{% else %}
+			<form method = "POST" action = "" enctype="multipart/form-data">
+				{{form.hidden_tag()}}
+				<fieldset class = "form-group">
+					<legend class = "border-bottom mb-4">Apply for  verification</legend>
+					<div class = "form-group">
+						{{form.id_proof.label()}}
+						{{form.id_proof(class="form-control-file")}}
+						{%if form.id_proof.errors%}
+							{%for error in form.id_proof.errors%}
+								<span class="text-danger">{{error}}</span>
+							{%endfor%}
+						{%endif%}
+					</div>
+				</fieldset>
+				<div class = "form-group">
+					{{form.submit(class= "btn-outline-info")}}
+				</div>
+			</form>
+		{% endif %}
+	{% else %}
+		<form method = "POST" action = "" enctype="multipart/form-data">
+			{{form.hidden_tag()}}
+			<fieldset class = "form-group">
+				<legend class = "border-bottom mb-4">Apply for  verification</legend>
+				<div class = "form-group">
+					{{form.id_proof.label()}}
+					{{form.id_proof(class="form-control-file")}}
+					{%if form.id_proof.errors%}
+						{%for error in form.id_proof.errors%}
+							<span class="text-danger">{{error}}</span>
+						{%endfor%}
+					{%endif%}
+				</div>
+			</fieldset>
+			<div class = "form-group">
+				{{form.submit(class= "btn-outline-info")}}
+			</div>
+		</form>
+	{% endif %}
+{%endblock content%}

@@ -1,0 +1,60 @@
+{%extends 'layout.html'%}	
+{%block content%}
+	<div class = "content-section">
+		<form method = "POST" action = "">
+			{{form.hidden_tag()}}
+			<fieldset class = "form-group">
+				<legend class = "border-bottom mb-4">Update Account</legend>
+				<div class = "form-group">
+					{{form.username.label(class="form-control-label")}}
+					{%if form.username.errors%}
+						{{form.username(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.username.errors%}
+								<span>{{error}}</span>
+							{%endfor%}
+						</div>
+					{%else%}
+						{{form.username(class="form-control form-control-lg form_filed")}}
+					{%endif%}	
+				</div>
+				<div class = "form-group">
+					{{form.email.label(class="form-control-label")}}
+					{%if form.email.errors%}
+						{{form.email(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.email.errors%}
+								<span>{{error}}</span>
+							{%endfor%}
+						</div>
+					{%else%}
+						{{form.email(class="form-control form-control-lg form_filed")}}
+					{%endif%}
+				</div>
+				<div class = "form-group">
+					{{form.name.label(class="form-control-label")}}
+					{%if form.name.errors%}
+						{{form.name(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.name.errors%}
+								<span>{{error}}</span>
+							{%endfor%}
+						</div>
+					{%else%}
+						{{form.name(class="form-control form-control-lg form_filed")}}
+					{%endif%}
+				</div>
+				<label for="city_id">City:</label>
+				<select name="city_id" id="city_id">
+					<option value="{{ current_city.id }}">{{ current_city.city }}</option>
+					{% for city in cities %}
+						<option value="{{ city.id }}">{{ city.city }}</option>
+					{% endfor %}
+				</select>
+			</fieldset>
+			<div class = "form-group">
+				{{form.submit(class= "btn-outline-info")}}
+			</div>
+		</form>
+	</div>
+{%endblock content%}

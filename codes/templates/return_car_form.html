@@ -1,0 +1,48 @@
+{%extends 'layout.html'%}
+{%block content%}
+	<div class = "content-section">
+		<form method = "POST" action = "">
+			{{form.hidden_tag()}}
+			<fieldset class = "form-group">
+				<legend class = "border-bottom mb-4">Review Car</legend>
+				<label for="said_date">Said Date:</label>
+				<select name="said_date" id="said_date">
+					<option value="1">True</option>
+					<option value="0">False</option>
+				</select>
+				<label for="said_time">Said Time:</label>
+				<select name="said_time" id="said_time">
+					<option value="1">True</option>
+					<option value="0">False</option>
+				</select>
+				<label for="proper_condition">Proper Condition:</label>
+				<select name="proper_condition" id="proper_condition">
+					<option value="1">True</option>
+					<option value="0">False</option>
+				</select>
+				<div class="form-group mt-3">
+					<label for="description">Description:</label>
+					<br>
+					<textarea id="description" name="description" rows="4" cols="50"></textarea>
+				</div>
+				<div class = "form-group">
+					{{form.fine.label(class="form-control-label")}}
+					{%if form.fine.errors%}
+						{{form.fine(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.fine.errors%}
+								<span>{{error}}</span>
+							{%endfor%}
+						</div>
+					{%else%}
+						{{form.fine(class="form-control form-control-lg form_filed")}}
+					{%endif%}
+				</div>
+			</fieldset>
+			<div class = "form-group">
+				{{form.submit(class= "btn btn-outline-info")}}
+			</div>
+		</form>
+	</div>
+
+{%endblock content%}

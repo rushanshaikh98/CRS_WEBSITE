@@ -1,0 +1,46 @@
+{%extends 'layout.html'%}
+{%block content%}
+	<div class = "content-section">
+		<form method = "POST" action = "taking_dates">
+			{{form.hidden_tag()}}
+			<fieldset class = "form-group">
+				<legend class = "border-bottom mb-4">Enter Data:</legend>
+				<div class = "form-group">
+					{{form.rent_from.label(class="form-control-label")}}
+					{%if form.rent_from.errors%}
+						{{form.rent_from(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.rent_from.errors%}
+								<span>{{error}}</span>
+							{%endfor%}
+						</div>
+					{%else%}
+						{{form.rent_from(class="form-control form-control-lg form_filed")}}
+					{%endif%}
+				</div>
+				<div class = "form-group">
+					{{form.rent_till.label(class="form-control-label")}}
+					{%if form.rent_till.errors%}
+						{{form.rent_till(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.rent_till.errors%}
+								<span>{{error}}</span>
+							{%endfor%}
+						</div>
+					{%else%}
+						{{form.rent_till(class="form-control form-control-lg form_filed")}}
+					{%endif%}
+				</div>
+				<label for="city_id">City To:</label>
+				<select name="city_id" id="city_id">
+					{% for city in cities %}
+						<option value="{{ city.id }}">{{ city.city }}</option>
+					{% endfor %}
+				</select>
+			</fieldset>
+			<div class = "form-group">
+				{{form.submit(class= "btn btn-outline-info")}}
+			</div>
+		</form>
+	</div>
+{%endblock content%}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for order in orders.items %}
+<article class="media content-section">
+    <div class="media-body">
+        <p class="article-content">User : {{ order.person.name }} || Username : {{ order.person.username }}</p>
+        <p class="article-content">Car ID : {{ order.car.car_id }}</p>
+        <p class="article-content">Model : {{ order.car.model.model_name }} || Company : {{ order.car.company.company_name }} || Category : {{ order.car.category.category }} </p>
+        <p class="article-content">Rented From : {{ order.rented_from }} || Rented Till : {{ order.rented_till }}</p>
+        <a href="{{ url_for('cars.car_taken', ids=order.booking_id )}}"><button type="button" class= "btn-outline-info">Taken!</button></a>
+    </div>
+</article>
+{% endfor %}
+{% for page_num in orders.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+    {% if page_num %}
+        {% if orders.page == page_num %}
+            <a class="btn btn-info mb-4" href="{{ url_for('users.bookings', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+            <a class="btn btn-outline-info mb-4" href="{{ url_for('users.bookings', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+    {% else %}
+    ...
+    {% endif %}
+{% endfor %}
+
+{% endblock content %}

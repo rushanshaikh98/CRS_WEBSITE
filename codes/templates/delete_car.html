@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<article class="media content-section">
+    <div class="media-body">
+        <p class="article-content">Car ID : {{ car.car_id }}</p>
+        <p class="article-content">Company : {{ car.company.company_name }}</p>
+        <p class="article-content">Model : {{ car.model.model_name }}</p>
+        <p class="article-content">Category : {{ car.category.category }}</p>
+        <p class="article-content">Color : {{ car.color }}</p>
+        <p class="article-content">Mileage : {{ car.mileage }}</p>
+        <p class="article-content">City : {{ car.city.city }}</p>
+        <a href="{{url_for('cars.delete_car', car_id=car.id)}}"><button type="button" class= "btn-outline-info">Delete Car!</button></a>
+    </div>
+</article>
+{% endblock content %}

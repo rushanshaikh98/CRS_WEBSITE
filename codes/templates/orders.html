@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for order in orders.items %}
+<article class="media content-section">
+    <div class="media-body">
+        <p class="article-content">Car ID : {{ order.car.car_id }}</p>
+        <p class="article-content">Model : {{ order.car.model.model_name }} || Company : {{ order.car.company.company_name }} || Category : {{ order.car.category.category }} </p>
+        <p class="article-content">Rented From : {{ order.rented_from }} || Rented Till : {{ order.rented_till }}</p>
+        <p class="article-content">Booking Time : {{ order.booking_time }}</p>
+        {% if order.final_status == "true" %}
+            {% if current_date < order.rented_from %}
+                <a href="{{ url_for('users.cancel_booking', ids=order.booking_id )}}"><button type="button" class= "btn-outline-info">Cancel Booking!</button></a>
+            {% endif %}
+        {% else %}
+            <p class="article-content">Booking cancelled</p>
+        {% endif %}
+        {% if order.fine > 0 %}
+            <p class="article-content">Fine : {{ order.fine }}</p>
+            <p class="article-content">Said Date : {{ order.said_date }}</p>
+            <p class="article-content">Said Time : {{ order.said_time }}</p>
+            <p class="article-content">Proper Condition : {{ order.proper_condition }}</p>
+            <p class="article-content">Description : {{ order.description }}</p>
+            {% if order.fine_paid == False %}
+                <a href="{{ url_for('users.fine_index', ids=order.booking_id, total_amount = order.fine )}}"><button type="button" class= "btn-outline-info">Pay Fine!</button></a>
+            {% else %}
+                <p class="article-content">You have successfully paid the fine!</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</article>
+{% endfor %}
+{% for page_num in orders.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+    {% if page_num %}
+        {% if orders.page == page_num %}
+            <a class="btn btn-info mb-4" href="{{ url_for('users.bookings', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+            <a class="btn btn-outline-info mb-4" href="{{ url_for('users.bookings', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+    {% else %}
+    ...
+    {% endif %}
+{% endfor %}
+
+{% endblock content %}

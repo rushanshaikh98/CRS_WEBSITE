@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+<article class="media content-section">
+    <div class="media-body">
+        <p class="article-content">Car ID : {{ car.car_id }}</p>
+        <p class="article-content">Company : {{ car.company.company_name }}</p>
+        <p class="article-content">Model : {{ car.model.model_name }}</p>
+        <p class="article-content">Category : {{ car.category.category }}</p>
+        <p class="article-content">Color : {{ car.color }}</p>
+        <p class="article-content">Mileage : {{ car.mileage }}</p>
+        <p class="article-content">City Taken : {{ car.city.city }}</p>
+        <p class="article-content">City Delivery : {{ dates.city.city }}</p>
+        <p class="article-content">Minimum Rent : {{ car.min_rent }}</p>
+        <p class="article-content">Price Per Day : {{ car.ppd }}</p>
+        <p class="article-content">Deposit Amount : {{ car.deposit }}</p>
+        <p class="article-content">Rent From : {{ rent_from }}</p>
+        <p class="article-content">Rent till : {{ rent_till }}</p>
+        <p class="article-content">Total days : {{ days }}</p>
+        {% if days<=1 %}
+            <p class="article-content">Rent Amount: {{ car.min_rent }}</p>
+            <p class="article-content">Deposit Amount: {{ car.deposit }}</p>
+            <p class="article-content">Total Amount: {{ car.min_rent + car.deposit }}</p>
+        {% else %}
+            <p class="article-content">Rent Amount: {{ days*car.ppd }}</p>
+            <p class="article-content">Deposit Amount: {{ car.deposit }}</p>
+            <p class="article-content">Total Amount: {{ (days*car.ppd) + car.deposit }}</p>
+        {% endif %}
+        <a href="{{url_for('users.index', ids = car.id , days = days)}}"><button type="button" class= "btn-outline-info">
+            Confirm Car!
+        </button></a>
+    </div>
+</article>
+{% endblock content %}

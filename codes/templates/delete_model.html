@@ -1,0 +1,20 @@
+{%extends 'layout.html'%}
+{%block content%}
+	<div class = "content-section">
+		<form method = "POST" action = "">
+			{{form.hidden_tag()}}
+			<fieldset class = "form-group">
+				<label for="model_id">Model:</label>
+				<select name="model_id" id="model_id">
+					{% for model in models %}
+						<option value="{{ model.id }}">{{ model.model_name }}</option>
+					{% endfor %}
+				</select>
+			</fieldset>
+			<div class = "form-group">
+				{{form.submit(class= "btn btn-outline-info")}}
+			</div>
+		</form>
+	</div>
+
+{%endblock content%}

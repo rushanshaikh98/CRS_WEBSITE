@@ -1,0 +1,16 @@
+{%extends 'layout.html'%}
+{%block content%}
+<form action="{{ url_for('users.fine_charge', total_amount = total_amount,ids=ids)}}" method="post">
+    <article>
+        <label>
+            <span>Amount is Rs{{ total_amount }}</span>
+        </label>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="{{ key }}"
+            data-description="Pay Fine"
+            data-amount="{{ total_amount * 100 }}"
+            data-locale="auto"></script>
+</form>
+{%endblock content%}
